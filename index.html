@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Virtual Potochis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-2xl w-full bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl text-red-500 mb-4">Calcula el descuento de tu Producto</h1>
+        <p class="text-lg text-gray-600 mb-4">Pon el precio que quieras y el porcentaje de descuento que quieras y tendrás tu nuevo precio.</p>
+        <div class="flex flex-col lg:flex-row justify-center items-center space-y-4 lg:space-x-4">
+            <div class="flex items-center space-x-2">
+                <label for="precio" class="text-lg">Pon aqui el precio de tu producto:</label>
+                <input min="0" id="precio" class="border rounded-md px-2 py-1" type="number">
+            </div>
+
+            <div class="flex items-center space-x-2">
+                <label for="porcentaje" class="text-lg">Pon aqui el descuento para descubrir tu nuevo precio:</label>
+                <input min="0" id="porcentaje" class="border rounded-md px-2 py-1" type="number">
+            </div>
+        </div>
+        <button onclick="calcularNuevoPrecio()" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md">Enviar Datos</button>
+        <div>
+            <p id="resultado" class="mt-4 text-xl text-green-600"></p>
+        </div>
+    </div>
+
+    <script>
+        function calcularNuevoPrecio() {
+            var precio = document.getElementById('precio').value
+            var descuento = document.getElementById('porcentaje').value
+            var resultado = document.getElementById('resultado')
+            var nuevoPrecio = [precio * (100 - descuento) / 100]
+
+            resultado.innerHTML = `El precio a pagar por tu producto es: $${nuevoPrecio}`
+        }
+    </script>
+</body>
+
+</html>
